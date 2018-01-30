@@ -7,6 +7,7 @@
         "runtime": "python3.6",
         "s3_bucket": "where-thyago",
         "certificate_arn": "arn:aws:acm:us-east-1:735365575663:certificate/4e057791-2dc6-49f6-b97e-5964a8f58588",
-        "domain": "where.thyago.com"
+        "domain": "where.thyago.com",
+        "keep_warm": false
     }
 }
