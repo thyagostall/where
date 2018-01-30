@@ -1,0 +1,17 @@
+language: python
+python:
+  - "3.6"
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - python -m unittest
+
+branches:
+  only:
+  - master
+
+deploy:
+  provider: script
+  script: zappa update production
