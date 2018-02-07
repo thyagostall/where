@@ -12,6 +12,20 @@ branches:
   only:
   - master
 
+before_deploy:
+  - zappa package production -o where-release.zip
+
 deploy:
-  provider: script
-  script: zappa update production
+  provider: lambda
+  function_name: "where-production"
+  region: "us-east-1"
+  role: $ROLE_DEPLOY
+  handler_name: "lambda_handler"
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  runtime: "python3.6"
+  module_name: "handler"
+  skip_cleanup: true
+  zip: where-release.zip
+  timeout: 15
+  memory_size: 512
