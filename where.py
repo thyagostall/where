@@ -1,9 +1,9 @@
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "Hello, world! (Second time)", 200
+    return render_template('index.html')
 
 # We only need this for local development.
 if __name__ == '__main__':
